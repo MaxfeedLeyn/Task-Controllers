@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using Triangles.Controllers;
 using Xunit;
 using FluentAssertions;
@@ -14,7 +15,7 @@ namespace TriangleTests
 
         private string _generateOutput(double side1, double side2, double side3, double perimeter, double area)
         {
-            return string.Format(TRIANGLE_INFO_TEMPLATE
+            return string.Format(CultureInfo.InvariantCulture, TRIANGLE_INFO_TEMPLATE
                 , Environment.NewLine
                 , side1
                 , side2
@@ -66,7 +67,7 @@ namespace TriangleTests
         [InlineData(7, 6, 5, 14.69690)]
         public void Area_WithCorrectSides_ReturnsArea(double side1, double side2, double side3, double area)
         {
-            string.Format("{0:F4}", area).Should().BeEquivalentTo(controller.Area(new Triangle(side1, side2, side3))); ;
+            string.Format(CultureInfo.InvariantCulture, "{0:F4}", area).Should().BeEquivalentTo(controller.Area(new Triangle(side1, side2, side3))); ;
         }
 
         [Theory]
@@ -74,7 +75,7 @@ namespace TriangleTests
         [InlineData(7, 6, 5, 18)]
         public void Perimeter_WitCorrectSides_ReturnsPerimeter(double side1, double side2, double side3, double perimeter)
         {
-            controller.Perimeter(new Triangle(side1, side2, side3)).ToString().Should().BeEquivalentTo(perimeter.ToString());
+            controller.Perimeter(new Triangle(side1, side2, side3)).ToString(CultureInfo.InvariantCulture).Should().BeEquivalentTo(perimeter.ToString(CultureInfo.InvariantCulture));
         }
 
         [Theory]

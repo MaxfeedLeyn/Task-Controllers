@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="TriangleSolution/Triangles.csproj" />
+  <Project Path="TriangleTests/TriangleTests.csproj" />
+</Solution>
